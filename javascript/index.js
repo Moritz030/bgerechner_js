@@ -94,7 +94,7 @@ const updateChart = () => {
 
 calculateBtn.addEventListener('click', () => {
   updateChart();
-  tabelle.innerHTML = '<p>Das in der Tabelle herangezogene Nettoeinkommen basiert auf den 2017 gültigen Einkommensteuersätzen und Sozialversicherungsbeiträgen. Für dieses und weitere Beispiele siehe die <a href="https://www.die-linke-grundeinkommen.de/fileadmin/lcmsbaggrundeinkommen/user/upload/BGE_druck.pdf" class="link-light"> Broschüre der BAG Grundeinkommen. </a></p> <br><p>Nettoeinkommen (Single) mit und ohne BGE (in Euro):</p> <br><img src="./img/tabelle.png"></img>'
+  tabelle.innerHTML = '<p>Das in der Tabelle herangezogene Nettoeinkommen basiert auf den 2017 gültigen Einkommensteuersätzen und Sozialversicherungsbeiträgen. Für dieses und weitere Beispiele siehe die <a href="https://www.die-linke-grundeinkommen.de/fileadmin/lcmsbaggrundeinkommen/user/upload/BGE_druck.pdf" class="link-light"> Broschüre der BAG Grundeinkommen. </a></p> <br><p>Nettoeinkommen (Single) mit und ohne BGE (in Euro):</p> <br><img src="./img/tabelle.png" class="img-fluid"></img>'
 });
 
 
