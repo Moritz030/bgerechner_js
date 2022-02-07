@@ -3,10 +3,6 @@ const calculateBtn = document.querySelector("#calculate-btn");
 const result = document.querySelector("#result");
 const basicIncome = 1180.0;
 
-calculateBtn.addEventListener('click', () => {
-  result.innerText = nettoUtopia(incomeValue.value)
-});
-
 const bgeSozialabgaben = (income, independent = false) => {
   const li = [16, 8, 1]; // krank, rente, alos
   // krank = Kranken&Pflegeversicherung in einer gemeinsamen Buerger*innenversicherung
@@ -40,3 +36,57 @@ const nettoUtopia = (income, independent = false) => {
   taxesBGE = bgeTaxesAndBgeAbg(income);
   return income - taxesBGE - bgeSozial.reduce((val1,val2) => val1+val2) + basicIncome*12;
 }
+
+
+// here starts the chart part:
+
+const labels = [
+  'Netto-Monatseinkommen', 'Steuern & BGE-Abgabe', 'Krankenversicherung', 'Rentenversicherung', 'Arbeitslosenversicherung'
+];
+
+let data = {
+  datasets: [{
+    label: 'BGE',
+    backgroundColor: ['rgb(58, 175, 88)', 'rgb(102, 0, 2)', 'rgb(129, 10, 13)', 'rgb(239, 33, 38)', 'rgb(255, 102, 106)'],
+    data: [],
+  }]
+};
+
+let config = {
+  type: 'pie',
+  data: data,
+  options: {
+    plugins: {
+      title: {
+        display: false,
+        text: 'Details'
+      },
+      legend: {
+        position: 'top',
+      },
+    },
+    responsive: true
+  }
+};
+
+const myChart = new Chart(
+  document.getElementById('myChart'),
+  config
+);
+
+calculateBtn.addEventListener('click', () => {
+  result.innerText = 'Netto-Monatseinkommen (inklusive ' + basicIncome + ' Euro BGE): ' + (nettoUtopia(incomeValue.value*12)/12).toFixed(2) + ' Euro';
+
+  let data = {
+    labels: labels,
+    datasets: [{
+      label: 'BGE',
+      backgroundColor: ['rgb(58, 175, 88)', 'rgb(102, 0, 2)', 'rgb(129, 10, 13)', 'rgb(239, 33, 38)', 'rgb(255, 102, 106)'],
+      data: [nettoUtopia(incomeValue.value*12)/12, bgeTaxesAndBgeAbg(incomeValue.value*12)/12, bgeSozialabgaben(incomeValue.value*12, independent = false)[0]/12, bgeSozialabgaben(incomeValue.value*12, independent = false)[1]/12, bgeSozialabgaben(incomeValue.value*12, independent = false)[2]/12],
+    }]
+  };
+  myChart.config.options.plugins.title.display = true;
+  myChart.data = data;
+  myChart.update();
+});
+
