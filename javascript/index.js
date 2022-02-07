@@ -1,5 +1,7 @@
 const incomeValue = document.querySelector("#income-value");
 const calculateBtn = document.querySelector("#calculate-btn");
+const tabelle = document.querySelector("#tabelle");
+
 const result = document.querySelector("#result");
 const basicIncome = 1180.0;
 
@@ -74,7 +76,7 @@ const myChart = new Chart(
   config
 );
 
-calculateBtn.addEventListener('click', () => {
+const updateChart = () => {
   result.innerText = 'Netto-Monatseinkommen (inklusive ' + basicIncome + ' Euro BGE): ' + (nettoUtopia(incomeValue.value*12)/12).toFixed(2) + ' Euro';
 
   let data = {
@@ -88,5 +90,12 @@ calculateBtn.addEventListener('click', () => {
   myChart.config.options.plugins.title.display = true;
   myChart.data = data;
   myChart.update();
+}
+
+calculateBtn.addEventListener('click', () => {
+  updateChart();
+  tabelle.innerHTML = '<p>Das in der Tabelle herangezogene Nettoeinkommen basiert auf den 2017 gültigen Einkommensteuersätzen und Sozialversicherungsbeiträgen. Für dieses und weitere Beispiele siehe die <a href="https://www.die-linke-grundeinkommen.de/fileadmin/lcmsbaggrundeinkommen/user/upload/BGE_druck.pdf" class="link-light"> Broschüre der BAG Grundeinkommen. </a></p> <br><p>Nettoeinkommen (Single) mit und ohne BGE (in Euro):</p> <br><img src="./img/tabelle.png"></img>'
 });
+
+
 
