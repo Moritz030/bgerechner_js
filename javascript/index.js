@@ -1,7 +1,7 @@
 const incomeValue = document.querySelector("#income-value");
 const calculateBtn = document.querySelector("#calculate-btn");
 const tabelle = document.querySelector("#tabelle");
-
+const chartHeader = document.querySelector("#chartheader");
 const result = document.querySelector("#result");
 const basicIncome = 1180.0;
 
@@ -77,7 +77,7 @@ const myChart = new Chart(
 );
 
 const updateChart = () => {
-  result.innerText = 'Netto-Monatseinkommen (inklusive ' + basicIncome + ' Euro BGE): ' + (nettoUtopia(incomeValue.value*12)/12).toFixed(2) + ' Euro';
+  result.innerHTML = 'Netto-Monatseinkommen (inklusive ' + basicIncome + ' Euro BGE): <br><div style="width: 136px; text-align: center; border-radius:8px; background-color: rgb(116,4,4);">' + (nettoUtopia(incomeValue.value*12)/12).toFixed(2) + ' Euro</div>';
 
   let data = {
     labels: labels,
@@ -94,7 +94,8 @@ const updateChart = () => {
 
 calculateBtn.addEventListener('click', () => {
   updateChart();
-  tabelle.innerHTML = '<p>Das in der Tabelle herangezogene Nettoeinkommen basiert auf den 2017 gültigen Einkommensteuersätzen und Sozialversicherungsbeiträgen. Für dieses und weitere Beispiele siehe die <a href="https://www.die-linke-grundeinkommen.de/fileadmin/lcmsbaggrundeinkommen/user/upload/BGE_druck.pdf" class="link-light"> Broschüre der BAG Grundeinkommen. </a></p> <br><p>Nettoeinkommen (Single) mit und ohne BGE (in Euro):</p> <br><img src="./img/tabelle.png" class="img-fluid"></img>'
+  tabelle.innerHTML = '<p><a class="link-light" data-bs-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" >Nettoeinkommen (Single) mit und ohne BGE (in Euro) </a> <div class="collapse" style="padding:12px; border:1px solid black;" id="collapse1"><p style="font-size: 16px; margin-bottom:0px;">Das in der Tabelle herangezogene Nettoeinkommen basiert auf den 2017 gültigen Einkommensteuersätzen und Sozialversicherungsbeiträgen. Für dieses und weitere Beispiele siehe die <a href="https://www.die-linke-grundeinkommen.de/fileadmin/lcmsbaggrundeinkommen/user/upload/BGE_druck.pdf" class="link-light"> Broschüre der BAG Grundeinkommen. </a></p><br><img src="./img/tabelle.png" class="img-fluid"></img></div> '
+  chartHeader.innerText = 'Nettoeinkommen & Abgaben';
 });
 
 
