@@ -3,6 +3,7 @@ const calculateBtn = document.querySelector("#calculate-btn");
 const tabelle = document.querySelector("#tabelle");
 const chartHeader = document.querySelector("#chartheader");
 const result = document.querySelector("#result");
+const mitmachen = document.querySelector("#mitmachen");
 const basicIncome = 1180.0;
 
 const bgeSozialabgaben = (income, independent = false) => {
@@ -94,8 +95,9 @@ const updateChart = () => {
 
 calculateBtn.addEventListener('click', () => {
   updateChart();
-  tabelle.innerHTML = '<p><a class="link-light" data-bs-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" >Nettoeinkommen (Single) mit und ohne BGE (in Euro) </a> <div class="collapse" style="padding:12px; border:1px solid black;" id="collapse1"><p style="font-size: 14px; margin-bottom:0px;">Das in der Tabelle herangezogene Nettoeinkommen basiert auf den 2017 gültigen Einkommensteuersätzen und Sozialversicherungsbeiträgen. Für dieses und weitere Beispiele siehe die <a href="https://www.die-linke-grundeinkommen.de/fileadmin/lcmsbaggrundeinkommen/user/upload/BGE_druck.pdf" class="link-light"> Broschüre der BAG Grundeinkommen. </a></p><br><img src="./img/tabelle.png" class="img-fluid"></img></div> '
+  tabelle.innerHTML = '<p><a class="link-light" data-bs-toggle="collapse" href="#collapse1" role="button" aria-expanded="true" >Nettoeinkommen (Single) mit und ohne BGE (in Euro) </a> <div class="collapse show" style="padding:12px; border:1px solid black;" id="collapse1"><p style="font-size: 14px; margin-bottom:0px;">Das in der Tabelle herangezogene Nettoeinkommen basiert auf den 2017 gültigen Einkommensteuersätzen und Sozialversicherungsbeiträgen. Für dieses und weitere Beispiele siehe die <a href="https://www.die-linke-grundeinkommen.de/fileadmin/lcmsbaggrundeinkommen/user/upload/BGE_druck.pdf" class="link-light"> Broschüre der BAG Grundeinkommen. </a></p><br><img src="./img/tabelle.png" class="img-fluid"></img><br></div> '
   chartHeader.innerText = 'Nettoeinkommen & Abgaben';
+  mitmachen.innerText= 'DIE LINKE & BGE: Mitmachen beim Mitgliederentscheid';
 });
 
 
