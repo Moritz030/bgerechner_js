@@ -78,7 +78,7 @@ const myChart = new Chart(
 );
 
 const updateChart = () => {
-  result.innerHTML = 'Netto-Monatseinkommen (inklusive ' + basicIncome + ' Euro BGE): <br><div style="width: 136px; padding-top: 4px; padding-bottom: 4px; text-align: center; border-radius:8px; background-color: rgb(116,4,4);">' + (nettoUtopia(incomeValue.value*12)/12).toFixed(2) + ' Euro</div>';
+  result.innerHTML = 'Netto-Monatseinkommen (inklusive ' + basicIncome + ' Euro BGE): <br><div style="width: 136px; text-align: center; border-radius:8px; background-color: rgb(116,4,4);">' + (nettoUtopia(incomeValue.value*12)/12).toFixed(2) + ' Euro</div>';
 
   let data = {
     labels: labels,
@@ -97,7 +97,7 @@ calculateBtn.addEventListener('click', () => {
   updateChart();
   tabelle.innerHTML = '<p><a class="link-light" data-bs-toggle="collapse" href="#collapse1" role="button" aria-expanded="true" >Nettoeinkommen (Single) mit und ohne BGE (in Euro) </a> <div class="collapse show" style="padding:12px; border:1px solid black;" id="collapse1"><p style="font-size: 14px; margin-bottom:0px;">Das in der Tabelle herangezogene Nettoeinkommen basiert auf den 2017 gültigen Einkommensteuersätzen und Sozialversicherungsbeiträgen. Für dieses und weitere Beispiele siehe die <a href="https://www.die-linke-grundeinkommen.de/fileadmin/lcmsbaggrundeinkommen/user/upload/BGE_druck.pdf" class="link-light"> Broschüre der BAG Grundeinkommen. </a></p><br><img src="./img/tabelle.png" class="img-fluid"></img><br></div> '
   chartHeader.innerText = 'Nettoeinkommen & Abgaben';
-  mitmachen.innerHTML= '<div style="margin-top:48px;"><p><a class="link-light" style="padding:8px 16px 8px 16px; border-radius:8px; background-color: rgb(116,4,4);" href="https://www.mit-links-zum-grundeinkommen.de/">Mitmachen beim Mitgliederentscheid</a></p></div>';
+  mitmachen.innerHTML= '<div style="margin-top:48px;"><p><a class="link-light" style="padding:4px 16px 4px 16px; border-radius:8px; background-color: rgb(116,4,4);" href="https://www.mit-links-zum-grundeinkommen.de/">Mitmachen beim Mitgliederentscheid</a></p></div>';
 });
 
 
